@@ -1,8 +1,8 @@
 FROM ruby:2.3-alpine
-MAINTAINER Andy Lim <alim@nspartners.com>
+MAINTAINER Moku srl <support@moku.io>
 
-ENV BUILD_PACKAGES="curl-dev ruby-dev build-base bash git gettext openrc" \
-    DEV_PACKAGES="zlib-dev libxml2-dev libxslt-dev tzdata yaml-dev sqlite-dev postgresql-dev mysql-dev sqlite sqlite-dev nginx" \
+ENV BUILD_PACKAGES="curl-dev ruby-dev build-base bash git gettext openrc nginx sqlite sqlite-dev" \
+    DEV_PACKAGES="zlib-dev libxml2-dev libxslt-dev tzdata yaml-dev sqlite-dev postgresql-dev mysql-dev" \
     RUBY_PACKAGES="ruby-json yaml nodejs"
 
 # Update and install base packages and nokogiri gem that requires a
@@ -31,14 +31,15 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 EXPOSE 3000
-RUN bundle config build.nokogiri --use-system-libraries && \
+RUN cd generic-api-backend && \
+            bundle config build.nokogiri --use-system-libraries && \
             bundle install && \
             bundle clean
 
 
 
 # Copy Nginx config template
-COPY config/nginx.conf  /etc/nginx/nginx.conf.orig
+COPY ./generic-api-backend/config/nginx.conf  /etc/nginx/nginx.conf.orig
 
 
 RUN adduser -D -u 1000 -g 'www' www && \
