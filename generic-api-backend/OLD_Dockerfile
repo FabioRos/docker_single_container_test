@@ -1,0 +1,39 @@
+FROM alpine:3.2
+MAINTAINER John Doe <john@doe.com>
+
+ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base git libffi-dev postgresql-dev
+ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
+ENV RAILS_PACKAGES nodejs postgresql-client
+
+# Update and install all of the required packages.
+# At the end, remove the apk cache
+RUN apk update && \
+    apk upgrade && \
+    apk add $BUILD_PACKAGES && \
+    apk add $RUBY_PACKAGES && \
+    apk add $RAILS_PACKAGES && \
+    rm -rf /var/cache/apk/*
+
+# RUN bundle config --global frozen 1
+#RUN gem install pg -v '0.21.0'
+
+#RUN bundle config build.mime-types --use-system-libraries
+RUN gem install therubyracer -- --use-system-libraries
+
+ENV APP_HOME /myapp
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+ADD Gemfile* $APP_HOME/
+RUN gem install bundler
+RUN bundle install
+
+ADD . $APP_HOME
+
+
+#
+#RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
+#
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
