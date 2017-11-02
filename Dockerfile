@@ -52,6 +52,13 @@ RUN adduser -D -u 1000 -g 'www' www && \
 
 EXPOSE 80
 
+RUN cd frontend  && \
+#    npm install --save-dev @angular/cli@latest && \
+    npm install -g @angular/cli@latest && \
+    ng build --prod --aot=false
+
+
+
 
 RUN ["chmod", "+x", "/usr/src/app/startup.sh"]
 CMD ./startup.sh

@@ -1,3 +1,5 @@
+/.idea/*
+
 #-------------#
 #---BACKEND---#
 #-------------#
@@ -36,3 +38,6 @@
 /generic-api-backend/# doc/api/
 /generic-api-backend/.yardoc/
 /generic-api-backend/doc/
+
+
+
