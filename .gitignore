@@ -14,30 +14,30 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/generic-api-backend/db/production.sqlite3
-/generic-api-backend/db/*.sqlite3-journal
+/backend/db/production.sqlite3
+/backend/db/*.sqlite3-journal
 
 # Ignore application configuration
-/generic-api-backend/config/application.yml
+/backend/config/application.yml
 
 # Ignore all logfiles and tempfiles.
-/generic-api-backend/log/*.log
-/generic-api-backend/tmp
-/generic-api-backend/temp
-/generic-api-backend/*.swp
-/generic-api-backend/*~
-/generic-api-backend/.byebug_history
-/generic-api-backend/.project
-/generic-api-backend/.DS_Store
-/generic-api-backend/.idea
-/generic-api-backend/coverage
-/generic-api-backend/db/schema.rb
-/generic-api-backend/public/javascripts/translations.js
-/generic-api-backend/public/system/
-/generic-api-backend/public/assets/
-/generic-api-backend/# doc/api/
-/generic-api-backend/.yardoc/
-/generic-api-backend/doc/
+/backend/log/*.log
+/backend/tmp
+/backend/temp
+/backend/*.swp
+/backend/*~
+/backend/.byebug_history
+/backend/.project
+/backend/.DS_Store
+/backend/.idea
+/backend/coverage
+/backend/db/schema.rb
+/backend/public/javascripts/translations.js
+/backend/public/system/
+/backend/public/assets/
+/backend/# doc/api/
+/backend/.yardoc/
+/backend/doc/
 
 
 

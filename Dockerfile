@@ -31,7 +31,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 EXPOSE 3000
-RUN cd generic-api-backend && \
+RUN cd backend && \
             bundle config build.nokogiri --use-system-libraries && \
             bundle install && \
             bundle clean
@@ -39,7 +39,7 @@ RUN cd generic-api-backend && \
 
 
 # Copy Nginx config template
-COPY ./generic-api-backend/config/nginx.conf  /etc/nginx/nginx.conf.orig
+COPY ./backend/config/nginx.conf  /etc/nginx/nginx.conf.orig
 
 
 RUN adduser -D -u 1000 -g 'www' www && \
