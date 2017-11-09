@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   root to: 'admin/dashboard#index'
 
-  get 'status', to: 'hello_world#hello'
+  get 'status', to: 'status#status'
 
   # root 'hello_world#hello'
 end
