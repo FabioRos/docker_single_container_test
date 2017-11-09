@@ -49,7 +49,6 @@ RUN adduser -D -u 1000 -g 'www' www && \
 
 
 
-
 EXPOSE 80
 
 RUN cd frontend  && \
