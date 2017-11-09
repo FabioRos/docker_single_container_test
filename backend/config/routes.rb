@@ -14,8 +14,11 @@ Rails.application.routes.draw do
     # make devise available for the global scope (confirmable, password resets...)
     # devise_for :users, :skip => [:sessions, :passwords, :registrations]
 
-    # resources :users, only: [:show, :update]
+    resources :users
+    resources :permissions
+    resources :roles
 
+    resources :items
   end
 
   # If authenticated, show the docs.
@@ -25,9 +28,9 @@ Rails.application.routes.draw do
   # If not authenticated, redirect to login.
   get 'docs', to: 'admin/dashboard#index'
 
-  # root to: 'admin/dashboard#index'
+  root to: 'admin/dashboard#index'
 
-  get 'hello_world/hello'
+  get 'status', to: 'hello_world#hello'
 
-  root 'hello_world#hello'
+  # root 'hello_world#hello'
 end

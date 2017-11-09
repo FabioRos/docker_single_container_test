@@ -25,12 +25,18 @@
 #  tokens                 :text
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_password_set     :boolean          default(FALSE), not null
+#  enabled                :boolean          default(TRUE), not null
+#  first_name             :string
+#  last_name              :string
+#  role_id                :integer
 #
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_role_id               (role_id)
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
 

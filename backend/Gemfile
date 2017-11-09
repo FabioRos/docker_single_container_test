@@ -109,9 +109,22 @@ gem 'airbrake-ruby', '2.2.4'
 
 gem 'figaro'
 
+# Server side search
+gem 'ransack'
+
+# Paginator
+gem 'kaminari'
+gem 'kaminari-i18n'
+
 gem 'paperclip'
 # gem 'aws-sdk', '>= 2.0'
+
+# Algolia
+gem 'algoliasearch'
+#gem "algoliasearch-rails"
 
 gem 'delayed_job_active_record'
 gem 'delayed_job', github: 'collectiveidea/delayed_job'  # TEMP rails 5
 gem 'daemons' # Needed by delayed_job
+
+gem 'bazaar'  # Rememberable password generator

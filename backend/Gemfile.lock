@@ -81,6 +81,9 @@ GEM
     airbrake (6.1.0)
       airbrake-ruby (~> 2.2, >= 2.2.3)
     airbrake-ruby (2.2.4)
+    algoliasearch (1.18.0)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
@@ -89,6 +92,7 @@ GEM
     arel (7.1.4)
     ast (2.3.0)
     awesome_print (1.8.0)
+    bazaar (0.0.2)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bourbon (4.3.4)
@@ -183,6 +187,7 @@ GEM
     has_scope (0.7.1)
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
+    httpclient (2.8.3)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.7.2)
@@ -396,9 +401,11 @@ DEPENDENCIES
   activeadmin (~> 1.0.0)
   airbrake (= 6.1.0)
   airbrake-ruby (= 2.2.4)
+  algoliasearch
   annotate
   apitome!
   awesome_print
+  bazaar
   brakeman
   bullet
   byebug
@@ -425,6 +432,7 @@ DEPENDENCIES
   faker
   figaro
   jbuilder (~> 2.0)
+  kaminari
   kaminari-i18n
   letter_opener
   paperclip
@@ -434,6 +442,7 @@ DEPENDENCIES
   rack-cors
   rails (>= 5.0.0, < 5.1)
   rails-i18n (~> 5.0.1)
+  ransack
   redcarpet
   redis (~> 3.0)
   rspec-rails (~> 3.5.0)

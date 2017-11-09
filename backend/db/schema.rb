@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316172406) do
+ActiveRecord::Schema.define(version: 20171101170647) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(version: 20150316172406) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string "name"
+    t.index ["name"], name: "index_permissions_on_name"
+  end
+
+  create_table "permissions_roles", id: false, force: :cascade do |t|
+    t.integer "role_id",       null: false
+    t.integer "permission_id", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name", limit: 20
+    t.string "hex",  limit: 10
+    t.index ["name"], name: "index_roles_on_name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false
@@ -81,9 +97,15 @@ ActiveRecord::Schema.define(version: 20150316172406) do
     t.text     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.boolean  "first_password_set",     default: false,   null: false
+    t.boolean  "enabled",                default: true,    null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "role_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
